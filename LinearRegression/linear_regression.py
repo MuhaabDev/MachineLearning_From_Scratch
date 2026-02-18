@@ -1,22 +1,20 @@
 class LinearRegression:
     
-    def __init__(self , weight = 0 , bias = 0 , alpha = 0.1 , iteration = 100):
+    def __init__(self , weight = 0 , bias = 0 , alpha = 0.1 , epoch = 100):
         self.weight = weight
         self.bias = bias
         self.alpha = alpha
-        self.iteration = iteration
-    
-    
+        self.epoch = epoch
     
     def train(self , x , y ):
         m = x.shape[0]
         
-        for i in range(self.iteration):
+        for i in range(self.epoch):
             sum_w = 0
             sum_b = 0  
                    
             cost_function = self.compute_cost_function( x , y , m)
-            print(f"At Iteration : {i} \t Cost Function : {cost_function}")
+            print(f"At epoch : {i} \t Cost Function : {cost_function}")
             
             for j in range(m):
                 tmp_w = ((self.weight * x[j] + self.bias) - y[j])*(x[j])
@@ -29,9 +27,6 @@ class LinearRegression:
 
         return self.weight , self.bias
     
-    
-    
-    
     def compute_cost_function(self , x , y , m):
         sum_error = 0
         for i in range(m):
@@ -40,14 +35,10 @@ class LinearRegression:
             sum_error += error
         J_w_b = (1/(2*m))*(sum_error)
         return J_w_b
-      
-      
-      
-            
+           
     def predict(self , input):
         prediction = self.weight * input + self.bias
         print(f"Input : {input} \t Predicted Output :{prediction}")
-     
      
         
     def draw_line(self):
