@@ -1,9 +1,9 @@
 class LinearRegression:
     
-    def __init__(self , weight = 0 , bias = 0 , alpha = 0.1 , epoch = 100):
+    def __init__(self , weight = 0 , bias = 0 , eta = 0.1 , epoch = 100):
         self.weight = weight
         self.bias = bias
-        self.alpha = alpha
+        self.eta = eta
         self.epoch = epoch
     
     def train(self , x , y ):
@@ -22,8 +22,8 @@ class LinearRegression:
                 sum_w += tmp_w
                 sum_b += tmp_b
                 
-            self.weight = self.weight - (self.alpha * (1/m) *sum_w)
-            self.bias = self.bias - (self.alpha * (1/m) * sum_b)
+            self.weight = self.weight - (self.eta * (1/m) *sum_w)
+            self.bias = self.bias - (self.eta * (1/m) * sum_b)
 
         return self.weight , self.bias
     
